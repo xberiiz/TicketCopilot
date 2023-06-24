@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -10,8 +10,8 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('/openai')
-  getOpenAi(): any {
-    return this.appService.getResponse();
+  @Post('/create/story')
+  createStory(@Body() body: any): any {
+    return this.appService.createAcceptanceCriteria(body);
   }
 }
